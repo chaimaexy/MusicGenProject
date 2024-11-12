@@ -1,0 +1,26 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environment
+myenv/
+
+# Jupyter Notebook checkpoints
+#*.ipynb_checkpoints/
+
+# Log files
+*.log
+
+
+
+# PyCharm project files
+.idea/
+*.iml
+
+# MacOS files
+.DS_Store
+
+# Backup files
+*.bak
+*.swp
