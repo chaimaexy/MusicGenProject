@@ -1,299 +1,131 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>Music Generator</title>-->
-<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">-->
-<!--    <style>-->
-<!--        /* Import classic serif font */-->
-<!--        body {-->
-<!--            font-family: 'Georgia', serif;-->
-<!--            background: url('https://www.pixelstalk.net/wp-content/uploads/2016/06/Free-HD-Piano-Backgrounds.jpg') no-repeat center center fixed;-->
-<!--            background-size: cover;-->
-<!--            color: #333;-->
-<!--            display: flex;-->
-<!--            flex-direction: column;-->
-<!--            align-items: center;-->
-<!--            justify-content: center;-->
-<!--            min-height: 100vh;-->
-<!--            margin: 0;-->
-<!--            text-align: center;-->
-<!--        }-->
-
-<!--        /* Semi-transparent overlay for readability */-->
-<!--        .overlay {-->
-<!--            position: absolute;-->
-<!--            top: 0;-->
-<!--            left: 0;-->
-<!--            width: 100%;-->
-<!--            height: 100%;-->
-<!--            background: rgba(255, 255, 255, 0.8);-->
-<!--            z-index: 1;-->
-<!--        }-->
-
-<!--        /* Main container styling */-->
-<!--        .container {-->
-<!--            position: relative;-->
-<!--            z-index: 2;-->
-<!--            max-width: 700px;-->
-<!--            width: 90%;-->
-<!--            padding: 25px;-->
-<!--            background: rgba(255, 255, 255, 0.9);-->
-<!--            border: 1px solid #ddd;-->
-<!--            border-radius: 12px;-->
-<!--            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);-->
-<!--            margin: 20px;-->
-<!--        }-->
-
-<!--        /* Heading styling */-->
-<!--        h1 {-->
-<!--            font-size: 2.8em;-->
-<!--            color: #5A3E36;-->
-<!--            margin-bottom: 15px;-->
-<!--            font-weight: bold;-->
-<!--            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);-->
-<!--        }-->
-
-<!--        h2 {-->
-<!--            font-size: 1.6em;-->
-<!--            color: #333;-->
-<!--            margin-top: 20px;-->
-<!--        }-->
-
-<!--        /* Description section styling */-->
-<!--        .description {-->
-<!--            padding: 15px;-->
-<!--            background-color: #f4f0ec;-->
-<!--            border-radius: 8px;-->
-<!--            margin-bottom: 20px;-->
-<!--            font-size: 1.1em;-->
-<!--            color: #5A3E36;-->
-<!--            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);-->
-<!--        }-->
-
-<!--        p {-->
-<!--            line-height: 1.6;-->
-<!--            margin: 10px 0;-->
-<!--        }-->
-
-<!--        /* Label and input field styling */-->
-<!--        label {-->
-<!--            font-weight: bold;-->
-<!--            margin-top: 15px;-->
-<!--            font-size: 1.1em;-->
-<!--            color: #5A3E36;-->
-<!--        }-->
-
-<!--        input[type="number"] {-->
-<!--            width: 100%;-->
-<!--            padding: 12px;-->
-<!--            font-size: 1em;-->
-<!--            border: 1px solid #ccc;-->
-<!--            border-radius: 5px;-->
-<!--            margin-top: 10px;-->
-<!--            outline: none;-->
-<!--            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);-->
-<!--        }-->
-
-<!--        /* Button styling */-->
-<!--        button {-->
-<!--            width: 100%;-->
-<!--            padding: 12px;-->
-<!--            background-color: #5A3E36;-->
-<!--            color: #ffffff;-->
-<!--            font-size: 1.1em;-->
-<!--            font-weight: bold;-->
-<!--            border: none;-->
-<!--            border-radius: 5px;-->
-<!--            cursor: pointer;-->
-<!--            margin-top: 15px;-->
-<!--            transition: background-color 0.3s ease;-->
-<!--        }-->
-
-<!--        button:hover {-->
-<!--            background-color: #714a3a;-->
-<!--        }-->
-
-<!--        /* Audio player styling */-->
-<!--        audio {-->
-<!--            margin-top: 20px;-->
-<!--            width: 100%;-->
-<!--            outline: none;-->
-<!--        }-->
-
-<!--        /* Media query for responsiveness */-->
-<!--        @media (max-width: 768px) {-->
-<!--            h1 {-->
-<!--                font-size: 2.2em;-->
-<!--            }-->
-<!--            .container {-->
-<!--                padding: 20px;-->
-<!--            }-->
-<!--        }-->
-<!--    </style>-->
-<!--</head>-->
-<!--<body>-->
-<!--    &lt;!&ndash; Overlay for readability &ndash;&gt;-->
-<!--    <div class="overlay"></div>-->
-
-<!--    <div class="container">-->
-<!--        <h1>Music Generator</h1>-->
-
-<!--        <div class="description">-->
-<!--            <h2>About the Project</h2>-->
-<!--            <p>Welcome to our AI-powered Music Generator! Enter your desired duration, and let the AI compose a unique piano piece tailored to your preference.</p>-->
-<!--            <p>With the ability to create music of any length, you’ll never run out of captivating melodies. Discover a fresh musical experience every time!</p>-->
-<!--        </div>-->
-
-<!--        &lt;!&ndash; Form for selecting duration &ndash;&gt;-->
-<!--        <form action="/generate" method="POST">-->
-<!--            <label for="duration">Choose duration (in seconds):</label>-->
-<!--            <input type="number" id="duration" name="duration" min="1" required placeholder="Enter duration, e.g., 5">-->
-<!--            <button type="submit">Generate Music</button>-->
-<!--        </form>-->
-
-<!--        &lt;!&ndash; Audio player to play generated audio &ndash;&gt;-->
-<!--        {% if audio_file %}-->
-<!--        <h2>Your Generated Music</h2>-->
-<!--        <audio controls>-->
-<!--            <source src="{{ audio_file }}" type="audio/mp3">-->
-<!--            Your browser does not support the audio element.-->
-<!--        </audio>-->
-<!--        {% endif %}-->
-<!--    </div>-->
-<!--</body>-->
-<!--</html>-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Piano Composer</title>
+    <title>Music Generator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <style>
-        /* General styling for a modern look */
+        /* Import classic serif font */
         body {
-            font-family: Arial, sans-serif;
-            background: url('https://img.freepik.com/premium-photo/artificial-intelligence-music-humanoid-robot-playing-piano-stylish-room_879736-1061.jpg') no-repeat center center fixed;
-            color: #f0f0f0;
+            font-family: 'Georgia', serif;
+            background: url('https://www.pixelstalk.net/wp-content/uploads/2016/06/Free-HD-Piano-Backgrounds.jpg') no-repeat center center fixed;
             background-size: cover;
+            color: #333;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             min-height: 100vh;
             margin: 0;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
 
-        /* Background overlay */
-        .background-overlay {
+        /* Semi-transparent overlay for readability */
+        .overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.6); /* Adjust opacity here */
+            background: rgba(255, 255, 255, 0.8);
             z-index: 1;
         }
 
-        /* Main container */
+        /* Main container styling */
         .container {
-            max-width: 600px;
-            width: 90%;
-            padding: 30px;
-            background: rgba(34, 34, 34, 0.9);
-            border-radius: 20px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-            text-align: center;
             position: relative;
             z-index: 2;
+            max-width: 700px;
+            width: 90%;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            margin: 20px;
         }
 
-        /* Header styling */
+        /* Heading styling */
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            color: #00ccff;
-            font-weight: 700;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+            font-size: 2.8em;
+            color: #5A3E36;
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
 
-        /* Subtitle */
         h2 {
-            font-size: 1.4em;
-            color: #00ccff;
+            font-size: 1.6em;
+            color: #333;
             margin-top: 20px;
-            font-weight: 600;
         }
 
-        /* Description styling */
+        /* Description section styling */
         .description {
-            font-size: 1.1em;
+            padding: 15px;
+            background-color: #f4f0ec;
+            border-radius: 8px;
             margin-bottom: 20px;
-            color: #e6e6e6;
+            font-size: 1.1em;
+            color: #5A3E36;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         p {
             line-height: 1.6;
-            color: #cccccc;
-            margin: 15px 0;
+            margin: 10px 0;
         }
 
-        /* Form label and input */
+        /* Label and input field styling */
         label {
+            font-weight: bold;
+            margin-top: 15px;
             font-size: 1.1em;
-            font-weight: 500;
-            display: block;
-            margin-bottom: 10px;
-            color: #00ccff;
+            color: #5A3E36;
         }
 
         input[type="number"] {
             width: 100%;
             padding: 12px;
             font-size: 1em;
-            border: none;
-            border-radius: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
             outline: none;
-            background: #333;
-            color: #ffffff;
-            margin-top: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         /* Button styling */
         button {
             width: 100%;
             padding: 12px;
-            font-size: 1.2em;
+            background-color: #5A3E36;
+            color: #ffffff;
+            font-size: 1.1em;
             font-weight: bold;
             border: none;
-            border-radius: 8px;
+            border-radius: 5px;
             cursor: pointer;
-            color: #333;
-            background: #00ccff;
-            margin-top: 20px;
-            transition: background 0.3s ease;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background: #00aacc;
+            background-color: #714a3a;
         }
 
-        /* Audio player */
+        /* Audio player styling */
         audio {
-            width: 100%;
             margin-top: 20px;
+            width: 100%;
             outline: none;
         }
 
         /* Media query for responsiveness */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2em;
+                font-size: 2.2em;
             }
             .container {
                 padding: 20px;
@@ -302,27 +134,28 @@
     </style>
 </head>
 <body>
-    <!-- Background overlay for transparency effect -->
-    <div class="background-overlay"></div>
+    <!-- Overlay for readability -->
+    <div class="overlay"></div>
 
     <div class="container">
-        <h1>AI Piano Composer</h1>
+        <h1>Music Generator</h1>
 
         <div class="description">
-            <h2>Create Your Own Melody</h2>
-            <p>Experience the magic of custom piano compositions, tailored to your desired duration. Generate and enjoy a one-of-a-kind melody that resonates with your unique musical taste.</p>
+            <h2>About the Project</h2>
+            <p>Welcome to our AI-powered Music Generator! Enter your desired duration, and let the AI compose a unique piano piece tailored to your preference.</p>
+            <p>With the ability to create music of any length, you’ll never run out of captivating melodies. Discover a fresh musical experience every time!</p>
         </div>
 
         <!-- Form for selecting duration -->
         <form action="/generate" method="POST">
-            <label for="duration">Select Duration (in seconds):</label>
-            <input type="number" id="duration" name="duration" min="1" required placeholder="e.g., 30">
-            <button type="submit">Generate Piano Melody</button>
+            <label for="duration">Choose duration (in seconds):</label>
+            <input type="number" id="duration" name="duration" min="1" required placeholder="Enter duration, e.g., 5">
+            <button type="submit">Generate Music</button>
         </form>
 
-        <!-- Audio player to play generated music -->
+        <!-- Audio player to play generated audio -->
         {% if audio_file %}
-        <h2>Your Custom Melody</h2>
+        <h2>Your Generated Music</h2>
         <audio controls>
             <source src="{{ audio_file }}" type="audio/mp3">
             Your browser does not support the audio element.
